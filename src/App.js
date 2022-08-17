@@ -5,7 +5,6 @@ import Article from  './components/pages/Article'
 import AddPost from './components/pages/AddPost'
 import EditPost from './components/pages/EditPost'
 import NotFound from './components/pages/NotFound'
-import { Container } from 'react-bootstrap';
 import Footer from './components/views/Footer'
 import Header from './components/views/Header'
 

@@ -7,7 +7,8 @@ import { Navigate } from 'react-router-dom'
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
- 
+import {deletePost} from '../../redux/store'
+import { NavLink } from 'react-router-dom'
 const Article =()=>{
 
     const [show, setShow] = useState(false);
@@ -20,13 +21,13 @@ const Article =()=>{
     const postData = useSelector(state => state.posts.find(list=>list.id===id))
     //({lists}, listId) => lists.find(list => list.id === listId)
 
-    const deletePost = e =>{
+    const onDeletePost = e =>{
         
         console.log('delete')
-        dispatch(deletePost(id));
+        dispatch(deletePost({id}));
         handleClose()
 
-        if(!postData) return <Navigate to="/" />
+    
           
     }
 
@@ -36,7 +37,7 @@ const Article =()=>{
                 <Container className="d-flex justify-content-between">
                     <h1>{postData.title}</h1>
                     <div  >
-                        <Button variant="outline-success" href="/post/add">Edit</Button>
+                        <Button variant="outline-success" as={NavLink} to="/post/edit/:id">Edit</Button>
                         <Button variant="outline-success" onClick={handleShow}>Delete</Button>
                         <Modal show={show} onHide={handleClose} centered>
                             <Modal.Header closeButton>
@@ -47,7 +48,7 @@ const Article =()=>{
                                 <Button variant="secondary" onClick={handleClose}>
                                     Close
                                 </Button>
-                                <Button variant="primary" onClick={deletePost}>
+                                <Button variant="primary" onClick={onDeletePost}>
                                     Delete
                                 </Button>
                             </Modal.Footer>

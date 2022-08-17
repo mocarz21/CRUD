@@ -12,9 +12,11 @@ const postsReducer = (statePart = [], action) => {
   console.log('działa')
   switch (action.type) {
     case 'app/post/DELETE':
-      return statePart.map(post =>(post.id !== action.id));
+      return statePart.filter(post =>(post.id !== action.id));
     case 'app/post/ADD':
       return [...statePart, {...action, id: shortid()}]
+    case 'app/post/EDIT':
+      return statePart.find(post =>(post.id === action.id))
       default: 
       return statePart
   };
