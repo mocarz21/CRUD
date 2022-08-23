@@ -9,6 +9,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import {deletePost} from '../../redux/store'
 import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 const Article =()=>{
 
     const [show, setShow] = useState(false);
@@ -30,14 +32,14 @@ const Article =()=>{
     
           
     }
-
+ console.log("/post/edit/",id)
     if(!postData) return <Navigate to="/" />
         return(
             <div>
                 <Container className="d-flex justify-content-between">
                     <h1>{postData.title}</h1>
                     <div  >
-                        <Button variant="outline-success" as={NavLink} to="/post/edit/:id">Edit</Button>
+                        <Button variant="outline-success" as={NavLink} to={'/post/edit/' + id}>Edit</Button>
                         <Button variant="outline-success" onClick={handleShow}>Delete</Button>
                         <Modal show={show} onHide={handleClose} centered>
                             <Modal.Header closeButton>

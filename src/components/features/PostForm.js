@@ -1,19 +1,21 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { useParams} from 'react-router'
 
-const PostForm = ({action, actionText}) =>{
+const PostForm = ({action, actionText, ...props}) =>{    {/*czemu te ... przed props */}
 
-    const [title, setTitle]= useState('');
-    const [author, setAuthor]= useState('');
-    const [published, setPublished]= useState('');
-    const [description, setDescription] =useState('');
-    const [content, setContent]= useState('')
-
+    const post = props.post || {}
+    const [title, setTitle]= useState(post.title || ''); 
+    const [author, setAuthor]= useState(post.author || '');
+    const [published, setPublished]= useState(post.publishedDate || '');
+    const [description, setDescription] =useState(post.shortDescription || '');
+    const [content, setContent]= useState(post.content || '')
+    const {id} =useParams();
 
     const runSubmit = e =>{
         e.preventDefault();
-        action({title,author,published,description,content});
+        action({title,author,published,description,content,id});
         setTitle('')
         setAuthor('')
         setPublished('')
@@ -26,7 +28,7 @@ const PostForm = ({action, actionText}) =>{
         <Form onSubmit={runSubmit} className="center col-md-5 mx-auto">
         <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">Title</Form.Label>
-            <Form.Control style={{ width: '350px' }} id="disabledTextInput" value= {title} onChange={e=> setTitle(e.target.value)}/> {/*Wytłumaczyc dokładnie preventDefault jakdokładnie działa wmomecie jak mamy funkcje kiedy ona blokuje odswiezanie czy te np: e musi bycwczesniej przekazan czy nie */}
+            <Form.Control style={{ width: '350px' }} id="disabledTextInput" value= {title} onChange={e=> setTitle(e.target.value)}/> 
         </Form.Group>
         <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">Author</Form.Label>
