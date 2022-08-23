@@ -2,6 +2,7 @@ import shortid from "shortid";
 
 //selectors
 
+
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
 
