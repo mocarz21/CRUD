@@ -3,6 +3,9 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useParams} from 'react-router'
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
+
 const PostForm = ({action, actionText, ...props}) =>{    {/*czemu te ... przed props */}
 
     const post = props.post || {}
@@ -25,7 +28,7 @@ const PostForm = ({action, actionText, ...props}) =>{    {/*czemu te ... przed p
 
 
     return(
-        <Form onSubmit={runSubmit} className="center col-md-5 mx-auto">
+    <Form onSubmit={runSubmit} className="center col-md-5 mx-auto">
         <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">Title</Form.Label>
             <Form.Control style={{ width: '350px' }} id="disabledTextInput" value= {title} onChange={e=> setTitle(e.target.value)}/> 
@@ -43,10 +46,9 @@ const PostForm = ({action, actionText, ...props}) =>{    {/*czemu te ... przed p
             <Form.Control style={{ width: '800px', minHeight: '100px' }}id="disabledTextInput" value= {description} onChange={e=>setDescription(e.target.value)}/>
         </Form.Group>
         <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Main content</Form.Label>
-            <Form.Control style={{ width: '800px', minHeight: '200px' }}id="disabledTextInput" value= {content} onChange={e=>setContent(e.target.value)}/>
+            <Form.Label htmlFor="disabledTextInput">content</Form.Label>
+            <ReactQuill style={{ width: '800px', minHeight: '100px' }} value= {content} onChange={e=>setContent(e.target.value)}/>
         </Form.Group>
-
         <Button type="submit">{actionText}</Button>
     </Form>
     )

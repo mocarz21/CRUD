@@ -4,7 +4,7 @@ import shortid from "shortid";
 
 
 // actions
-const createActionName = actionName => `app/posts/${actionName}`;
+// const createActionName = actionName => `app/posts/${actionName}`;
 
 
 // action creators
