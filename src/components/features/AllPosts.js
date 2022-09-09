@@ -1,7 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
-import { useParams} from 'react-router';
+import { NavLink } from 'react-router-dom';
+import dateToStr from '../../utils/dateToStr'
+
 
 
 
@@ -9,7 +11,7 @@ import { useParams} from 'react-router';
 const AllPosts =()=>{
 
     const posts = useSelector(state => state.posts)
-    
+
     console.log(posts)
     return(
     <div className="d-flex justify-content-between flex-wrap">
@@ -19,10 +21,10 @@ const AllPosts =()=>{
           <Card.Title>{post.title}</Card.Title>
           <Card.Text>
             <h2>Author: {post.author}</h2>
-            <h2>Published: {post.publishedDate}</h2>
+            <h2>Published: {dateToStr(post.publishedDate)}</h2>
             <h2>{post.shortDescription}</h2>
           </Card.Text>
-          <Button  variant="primary" href={"/post/"+ post.id}>Read More</Button>
+          <Button  variant="primary" as={NavLink} to={'/post/'+ post.id}>Read More</Button>
         </Card.Body>
       </Card>)}
     </div>

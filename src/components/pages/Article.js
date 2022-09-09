@@ -7,9 +7,9 @@ import { Navigate } from 'react-router-dom'
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
-import {deletePost} from '../../redux/store'
-import { NavLink } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import {deletePost} from '../../redux/store';
+import { NavLink } from 'react-router-dom';
+import dateToStr from '../../utils/dateToStr'
 
 const Article =()=>{
 
@@ -61,9 +61,12 @@ const Article =()=>{
                     <Card.Body>
                         <Card.Title  >{postData.title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{postData.author}</Card.Subtitle>
-                        <Card.Subtitle className="mb-2 text-muted">{postData.publishedDate}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">{dateToStr(postData.publishedDate)}</Card.Subtitle>
                         <Card.Text>
                             {postData.shortDescription}
+                        </Card.Text>
+                        <Card.Text>
+                            {<p dangerouslySetInnerHTML={{ __html: postData.content }} />}
                         </Card.Text>
                     </Card.Body>
                 </Card>

@@ -1,3 +1,4 @@
+
 const initialState = {
     posts:[
         {
@@ -5,7 +6,7 @@ const initialState = {
             title: '123',
             shortDescription: 'Magic of number 4',
             content: 'Magic',
-            publishedDate: '01-04-2022',
+            publishedDate: new Date('2019-07-24'),
             author: 'John Doe'
       },
       {
@@ -13,7 +14,7 @@ const initialState = {
             title: 'Run Forest',
             shortDescription: 'run or not to run',
             content: 'Run',
-            publishedDate: '12-12-2022',
+            publishedDate: new Date('2022-02-12'),
             author: 'Ralph Bignose'
       },
       {
@@ -21,7 +22,7 @@ const initialState = {
             title: 'Back to school',
             shortDescription: 'Need Water',
             content: 'Fire at school',
-            publishedDate: '22-02-2022',
+            publishedDate: new Date('2022-02-10'),
             author: 'Man inFire'
       },
       {
@@ -29,7 +30,7 @@ const initialState = {
             title: 'My name is ....',
             shortDescription: 'Eminem',
             content: 'Music',
-            publishedDate: '06-04-2022',
+            publishedDate: new Date('2022-06-05'),
             author: 'Jonathan Blekot'
        },
       

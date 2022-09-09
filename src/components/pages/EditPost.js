@@ -4,6 +4,8 @@ import { useParams} from 'react-router'
 import { useSelector } from 'react-redux';
 import { getPostData, postEdit } from '../../redux/store';
 
+
+
 const EditPost =()=>{
 
     const dispatch = useDispatch()
