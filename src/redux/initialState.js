@@ -7,7 +7,8 @@ const initialState = {
             shortDescription: 'Magic of number 4',
             content: 'Magic',
             publishedDate: new Date('2019-07-24'),
-            author: 'John Doe'
+            author: 'John Doe',
+            category: 'Sport'
       },
       {
             id: '2',
@@ -15,7 +16,8 @@ const initialState = {
             shortDescription: 'run or not to run',
             content: 'Run',
             publishedDate: new Date('2022-02-12'),
-            author: 'Ralph Bignose'
+            author: 'Ralph Bignose',
+            category: 'Sport'
       },
       {
             id: '3',
@@ -23,7 +25,8 @@ const initialState = {
             shortDescription: 'Need Water',
             content: 'Fire at school',
             publishedDate: new Date('2022-02-10'),
-            author: 'Man inFire'
+            author: 'Man inFire',
+            category: 'Music'
       },
       {
             id: '4',
@@ -31,7 +34,8 @@ const initialState = {
             shortDescription: 'Eminem',
             content: 'Music',
             publishedDate: new Date('2022-06-05'),
-            author: 'Jonathan Blekot'
+            author: 'Jonathan Blekot',
+            category: 'News'
        },
       
     ]

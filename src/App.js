@@ -7,6 +7,7 @@ import EditPost from './components/pages/EditPost'
 import NotFound from './components/pages/NotFound'
 import Footer from './components/views/Footer'
 import Header from './components/views/Header'
+import Category from './components/pages/Category'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Routes>
               <Route path ="/" element={<Home/>} />
               <Route path ="/about" element={<About/>} />
+              <Route path ="/category" element={<Category/>} />
               <Route path = "/post/:id" element={<Article/>} />
               <Route path = "/post/add" element={<AddPost/>} />
               <Route path = "/post/edit/:id" element={<EditPost/>} />

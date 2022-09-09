@@ -22,6 +22,7 @@ const AllPosts =()=>{
           <Card.Text>
             <h2>Author: {post.author}</h2>
             <h2>Published: {dateToStr(post.publishedDate)}</h2>
+            <h2>Category: {post.category}</h2>
             <h2>{post.shortDescription}</h2>
           </Card.Text>
           <Button  variant="primary" as={NavLink} to={'/post/'+ post.id}>Read More</Button>

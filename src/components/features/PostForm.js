@@ -1,3 +1,4 @@
+import CategoryList from './CategoryList'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
@@ -7,6 +8,9 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const PostForm = ({action, actionText, ...props}) =>{
 
@@ -20,18 +24,28 @@ const PostForm = ({action, actionText, ...props}) =>{
     const [content, setContent]= useState(post.content || '');
     const [dateError, setDateError] = useState(false);
     const [contentError, setContentError] = useState(false);
+    const [category, setCategory] =useState('')
     const {id} =useParams();
+    let navigate = useNavigate();
+
+    const categorys =useSelector(store => store.posts.map(post=>post.category))
+    const filtredCategorys = categorys.filter(function (x, i, a) { 
+        return a.indexOf(x) === i; 
+    });
+
+    console.log('category',category)
 
     const runSubmit = e =>{
         setContentError(!content)
         setDateError(!published)
         if(content && published){
-            action({title,author,published,description,content,id});
+            action({title,author,published,description,content,id,category});
             setTitle('')
             setAuthor('')
             setPublished('')
             setDescription('')
             setContent('')  
+            navigate('/');
             //window.location.href = "/";
         }
 
@@ -59,6 +73,13 @@ const PostForm = ({action, actionText, ...props}) =>{
             <DatePicker dateFormat="dd/MM/yyyy" selected={published} onChange={(date) => setPublished(date)} />
             {dateError && <small className="d-block form-text text-danger mt-2">Published can't be empty</small>}
         </Form.Group>
+        <Form.Label htmlFor="disabledTextInput">Category</Form.Label>
+        
+        <Form.Select aria-label="Default select example" onChange={select=>setCategory(filtredCategorys[select.target.value])}>
+            <option>Open this select menu</option>
+            {filtredCategorys.map((category, index) =><option key={index} value={index}>{category}</option>)}
+        </Form.Select>
+        
         <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">Short Descriptin</Form.Label>
             <Form.Control 
@@ -68,7 +89,7 @@ const PostForm = ({action, actionText, ...props}) =>{
         </Form.Group>
         <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">content</Form.Label>
-            <ReactQuill style={{ width: '800px', minHeight: '100px' }} value= {content} onChange={e=>setContent(e)}/>
+            <ReactQuill style={{ width: '800px', minHeight: '100px' }} value= {content} onChange={content=>setContent(content)}/>
             {contentError && <small className="d-block form-text text-danger mt-2">Content can't be empty</small>}
         </Form.Group>
         <Button  type="submit">{actionText}</Button>

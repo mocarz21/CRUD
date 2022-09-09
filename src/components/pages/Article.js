@@ -62,6 +62,7 @@ const Article =()=>{
                         <Card.Title  >{postData.title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{postData.author}</Card.Subtitle>
                         <Card.Subtitle className="mb-2 text-muted">{dateToStr(postData.publishedDate)}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">{postData.category}</Card.Subtitle>
                         <Card.Text>
                             {postData.shortDescription}
                         </Card.Text>
